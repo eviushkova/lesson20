@@ -10,38 +10,26 @@ public class AccountEditTests extends TestBase {
     @Test
     void addNewAddressTest() {
 
-        String valueId = "0",
-                valueFirstName = "Brown",
-                valueLastName = "Smith",
-                valueEmail = "b.smith123@test.com",
-                valueCompany = "Orbit",
-                valueCountryId = "1",
-                valueStateProvinceId = "54",
-                valueCity = "Austin",
-                valueAddress1 = "Hoover1",
-                valueAddress2 = "Pack2",
-                valueZipPostalCode = "090909",
-                valuePhoneNumber = "3798989898",
-                valueFaxNumber = "";
+        AddressData addressData = AddressData.builder().build();
 
         String authCookiesValue = auth.getAuthCookies(login, password);
 
         given()
                 .contentType("application/x-www-form-urlencoded")
                 .cookie(authCookiesKey, authCookiesValue)
-                .formParam("Address.Id", valueId)
-                .formParam("Address.FirstName", valueFirstName)
-                .formParam("Address.LastName", valueLastName)
-                .formParam("Address.Email", valueEmail)
-                .formParam("Address.Company", valueCompany)
-                .formParam("Address.CountryId", valueCountryId)
-                .formParam("Address.StateProvinceId", valueStateProvinceId)
-                .formParam("Address.City", valueCity)
-                .formParam("Address.Address1", valueAddress1)
-                .formParam("Address.Address2", valueAddress2)
-                .formParam("Address.ZipPostalCode", valueZipPostalCode)
-                .formParam("Address.PhoneNumber", valuePhoneNumber)
-                .formParam("Address.FaxNumber", valueFaxNumber)
+                .formParam("Address.Id", addressData.getId())
+                .formParam("Address.FirstName", addressData.getFirstName())
+                .formParam("Address.LastName", addressData.getLastName())
+                .formParam("Address.Email", addressData.getEmail())
+                .formParam("Address.Company", addressData.getCompany())
+                .formParam("Address.CountryId", addressData.getCountryId())
+                .formParam("Address.StateProvinceId", addressData.getStateProvinceId())
+                .formParam("Address.City", addressData.getCity())
+                .formParam("Address.Address1", addressData.getAddress1())
+                .formParam("Address.Address2", addressData.getAddress2())
+                .formParam("Address.ZipPostalCode", addressData.getZipPostalCode())
+                .formParam("Address.PhoneNumber", addressData.getPhoneNumber())
+                .formParam("Address.FaxNumber", addressData.getFaxNumber())
                 .when()
                 .post("/customer/addressedit/3124028")
                 .then()
@@ -54,38 +42,40 @@ public class AccountEditTests extends TestBase {
     @Test
     void editAddressTest() {
 
-        String valueId = "3124028",
-                valueFirstName = "Brown007",
-                valueLastName = "Smith007",
-                valueEmail = "b.smith007@test.com",
-                valueCompany = "Orbit123",
-                valueCountryId = "1",
-                valueStateProvinceId = "54",
-                valueCity = "Austin123",
-                valueAddress1 = "Hoover123",
-                valueAddress2 = "Pack213",
-                valueZipPostalCode = "090910",
-                valuePhoneNumber = "3798989810",
-                valueFaxNumber = "";
+        var ad = AddressData.builder()
+                .id("3124028")
+                .firstName("Brown007")
+                .lastName("Smith007")
+                .email("b.smith007@test.com")
+                .company("Orbit123")
+                .countryId("1")
+                .stateProvinceId("54")
+                .city("Austin123")
+                .address1("Hoover123")
+                .address2("Pack213")
+                .zipPostalCode("090910")
+                .phoneNumber("3798989810")
+                .faxNumber("")
+                .build();
 
         String authCookiesValue = auth.getAuthCookies(login, password);
 
         given()
                 .contentType("application/x-www-form-urlencoded")
                 .cookie(authCookiesKey, authCookiesValue)
-                .formParam("Address.Id", valueId)
-                .formParam("Address.FirstName", valueFirstName)
-                .formParam("Address.LastName", valueLastName)
-                .formParam("Address.Email", valueEmail)
-                .formParam("Address.Company", valueCompany)
-                .formParam("Address.CountryId", valueCountryId)
-                .formParam("Address.StateProvinceId", valueStateProvinceId)
-                .formParam("Address.City", valueCity)
-                .formParam("Address.Address1", valueAddress1)
-                .formParam("Address.Address2", valueAddress2)
-                .formParam("Address.ZipPostalCode", valueZipPostalCode)
-                .formParam("Address.PhoneNumber", valuePhoneNumber)
-                .formParam("Address.FaxNumber", valueFaxNumber)
+                .formParam("Address.Id", ad.getId())
+                .formParam("Address.FirstName", ad.getFirstName())
+                .formParam("Address.LastName", ad.getLastName())
+                .formParam("Address.Email", ad.getEmail())
+                .formParam("Address.Company", ad.getCompany())
+                .formParam("Address.CountryId", ad.getCountryId())
+                .formParam("Address.StateProvinceId", ad.getStateProvinceId())
+                .formParam("Address.City", ad.getCity())
+                .formParam("Address.Address1", ad.getAddress1())
+                .formParam("Address.Address2", ad.getAddress2())
+                .formParam("Address.ZipPostalCode", ad.getZipPostalCode())
+                .formParam("Address.PhoneNumber", ad.getPhoneNumber())
+                .formParam("Address.FaxNumber", ad.getFaxNumber())
                 .when()
                 .post("/customer/addressedit/3124028")
                 .then()
