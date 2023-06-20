@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 public class AccountEditTests extends TestBase {
 
     @Test
-    void addNewAddress() {
+    void addNewAddressTest() {
 
         String valueId = "0",
                 valueFirstName = "Brown",
@@ -52,7 +52,7 @@ public class AccountEditTests extends TestBase {
     }
 
     @Test
-    void editAddress() {
+    void editAddressTest() {
 
         String valueId = "3124028",
                 valueFirstName = "Brown007",
