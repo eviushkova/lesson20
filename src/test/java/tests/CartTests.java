@@ -7,11 +7,10 @@ import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.Test;
 
 import static auth.Auth.authCookiesKey;
-
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.is;
 
 public class CartTests extends TestBase {
     String authCookiesValue;
@@ -76,3 +75,10 @@ public class CartTests extends TestBase {
                 .body("updatetopcartsectionhtml", is("(3)"));
     }
 }
+
+
+            /*
+            1. Выполнить логин через api
+            2. Открыть кастомер инфо через API
+            3. Отредакировать personal details
+            */
