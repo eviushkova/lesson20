@@ -144,7 +144,9 @@ public class AccountEditTests extends TestBase {
                 .log().all()
                 .assertThat()
                 .statusCode(302);
+
         Thread.sleep(2000);
+
         step("Reload page", () ->
                 open("/customer/addresses"));
         step("Check edited customer title", () ->
